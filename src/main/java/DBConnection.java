@@ -14,8 +14,23 @@ DBConnection() throws Exception{
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll_service", "root", "password");
         System.out.println("connection established........");
     }catch (Exception e){}
-    con.close();
-    System.out.println("connection closed...............");
 }
 
+    public void display() throws Exception {
+        ps = con.prepareStatement("SELECT * FROM EMPLOYEE_PAYROLL");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)
+                    +" "+rs.getDouble(4)+"  "+rs.getDouble(5)
+                    +"  "+rs.getDouble(6)+"  "+rs.getDouble(7)
+                    +"  "+rs.getDouble(8)+"  "+rs.getDate(9)
+                    +"  "+rs.getString(10)+"  "+rs.getString(11)
+                    +"  "+rs.getString(12));
+        }
+    }
+
+    public void close() throws Exception{
+        con.close();
+        System.out.println("Connection closed.....");
+    }
 }

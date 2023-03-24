@@ -7,13 +7,21 @@ public class EmployeePayroll {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int choice = -1;
         while (choice!=0){
-            System.out.println("Enter your choice:\n1. DISPLAY EMPLOYEE PAYROLL\n0. EXIT");
+            System.out.println("Enter your choice:\n1. DISPLAY EMPLOYEE PAYROLL\n2. UPDATE\n0. EXIT");
             choice = Integer.parseInt(br.readLine());
             switch (choice){
                 case 1: con.display();
                 break;
-                case 0: choice=0;
+                case 2:
+                    System.out.println("Enter the name to update base pay");
+                    String name = br.readLine();
+                    System.out.println("Enter the basic pay to update");
+                    Double pay = Double.parseDouble(br.readLine());
+                    con.update(name,pay);
+                    break;
+                case 0:
                 con.close();
+                break;
             }
         }
     }

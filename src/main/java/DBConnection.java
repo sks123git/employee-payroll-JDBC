@@ -28,7 +28,13 @@ DBConnection() throws Exception{
                     +"  "+rs.getString(12));
         }
     }
-
+    public void update(String name,Double pay) throws Exception {
+        ps = con.prepareStatement("UPDATE EMPLOYEE_PAYROLL SET BASIC_PAY = ? WHERE NAME = ?");
+        ps.setDouble(1,pay);
+        ps.setString(2,name);
+        ps.executeUpdate();
+        System.out.println("Record updated........");
+    }
     public void close() throws Exception{
         con.close();
         System.out.println("Connection closed.....");

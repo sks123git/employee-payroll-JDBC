@@ -47,4 +47,17 @@ DBConnection() throws Exception{
         con.close();
         System.out.println("Connection closed.....");
     }
+
+    public void updateDate(String date) throws Exception {
+        ps = con.prepareStatement("SELECT * FROM employee_payroll WHERE CAST(? AS DATE) AND DATE(NOW())");
+        ps.setDate(1, java.sql.Date.valueOf(date));
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)
+                    +" "+rs.getDouble(4)+"  "+rs.getDouble(5)
+                    +"  "+rs.getDouble(6)+"  "+rs.getDouble(7)
+                    +"  "+rs.getDouble(8)+"  "+rs.getDate(9)
+                    +"  "+rs.getString(10)+"  "+rs.getString(11));
+        }
+    }
 }

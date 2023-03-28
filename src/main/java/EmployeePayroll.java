@@ -30,6 +30,21 @@ public class EmployeePayroll {
                     break;
                 case 4:
                     con.FindMultipleValues();
+                    break;
+                case 5:
+                    System.out.println("Enter the name");
+                    name = br.readLine();
+                    System.out.println("Enter the gender");
+                    String gender = br.readLine();
+                    System.out.println("Enter basic Pay");
+                    double basic = Double.parseDouble(br.readLine());
+                    System.out.println("Enter the start date eg '2010-11-02'");
+                    date = br.readLine();
+                    System.out.println("Enter the employee phone");
+                    String phone = br.readLine();
+                    System.out.println("Enter the address");
+                    String address = br.readLine();
+                    con.addEmployee(name,gender,basic,date,phone,address);
                 case 0:
                 con.close();
                 break;

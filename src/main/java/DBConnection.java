@@ -60,4 +60,59 @@ DBConnection() throws Exception{
                     +"  "+rs.getString(10)+"  "+rs.getString(11));
         }
     }
+
+    public void FindMultipleValues() throws Exception{
+        System.out.println("------------------------------------------------------");
+        ps = con.prepareStatement("SELECT SUM(net_pay) FROM employee_payroll WHERE gender = 'M' GROUP BY gender");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("sum of salaries of male: "+ rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT SUM(net_pay) FROM employee_payroll WHERE gender = 'F' GROUP BY gender");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("sum of salaries of females: "+ rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT AVG(net_pay) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Average of salaries of males: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT AVG(net_pay) FROM employee_payroll WHERE gender = 'F' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Average of salaries of females: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT MAX(net_pay) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Maximum of salaries of males: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT MAX(net_pay) FROM employee_payroll WHERE gender = 'F' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Maximum of salaries of females: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT MIN(net_pay) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Minimum of salaries of males: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT MIN(net_pay) FROM employee_payroll WHERE gender = 'F' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Minimum of salaries of females: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT COUNT(net_pay) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Number of male employee: " + rs.getInt(1));
+        }
+        ps = con.prepareStatement("SELECT COUNT(net_pay) FROM employee_payroll WHERE gender = 'F' GROUP BY gender;");
+        rs = ps.executeQuery();
+        while (rs.next()){
+            System.out.println("Number of female employee: " + rs.getInt(1));
+        }
+        System.out.println("------------------------------------------------------");
+    }
 }

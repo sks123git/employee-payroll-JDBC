@@ -10,7 +10,7 @@ public class EmployeePayroll {
         Double pay;
         while (choice!=0){
             System.out.println("Enter your choice:\n1. DISPLAY EMPLOYEE PAYROLL\n2. UPDATE SALARY\n3. GET EMPLOYEE LIST WHO " +
-                    "JOINED IN PARTICULAR DATE RANGE\n0. EXIT");
+                    "JOINED IN PARTICULAR DATE RANGE\n4. DISPLAY MIN,MAX,AVG,COUNT\n0. EXIT");
 
             choice = Integer.parseInt(br.readLine());
             switch (choice){
@@ -28,6 +28,8 @@ public class EmployeePayroll {
                      date = br.readLine();
                     con.updateDate(date);
                     break;
+                case 4:
+                    con.FindMultipleValues();
                 case 0:
                 con.close();
                 break;
